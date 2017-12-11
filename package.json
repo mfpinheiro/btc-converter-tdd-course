@@ -1,25 +1,35 @@
 {
-  "name": "js-tdd-course",
+  "name": "btc-converter-tdd-course",
   "version": "1.0.0",
-  "description": "Biblioteca do curso de JS com TDD na prática.",
-  "main": "index.js",
+  "description": "A CLI to convert Bitcoin to any currency provided.",
+  "main": "lib/index.js",
   "scripts": {
-    "build": "./node_modules/.bin/webpack --colors --progress",
-    "watch": "npm run build -- --watch",
-    "server": "./node_modules/.bin/webpack-dev-server --inline --open",
+    "clear": "rimraf lib",
+    "build": "npm run clear && ./node_modules/.bin/babel --out-dir bin src",
     "lint": "./node_modules/.bin/eslint src/*.js",
     "lint-fix": "./node_modules/.bin/eslint src/*.js --fix",
+    "lint-fix:tests": "./node_modules/.bin/eslint tests/*.js --fix",
     "prepush": "npm run lint && npm run test:coverage",
-    "test": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register",
-    "test:tdd": "./node_modules/.bin/mocha tests/**/*.spec.js --watch --require babel-register --reporter=list",
+    "test": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register --reporter nyan",
+    "test:tdd": "npm run test -- --watch",
     "test:coverage": "nyc npm test"
   },
+  "preferGlobal": true,
+  "bin":{
+    "btc-converter-tdd-course": "bin/main.js"
+  },
   "nyc": {
-    "functions": 80,
-    "lines": 80,
-    "check-coverage": true,
-    "reporter": ["text", "html"],
-    "exclude": ["tests/**"]
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "exclude": [
+      "tests/**"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mfpinheiro/btc-converter-tdd-course.git"
   },
   "keywords": [
     "js",
@@ -28,27 +38,22 @@
   ],
   "author": "mfpinheiro <mateusfpinheiro@gmail.com> (https://github.com/mfpinheiro)",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mfpinheiro/btc-converter-tdd-course/issues"
+  },
+  "homepage": "https://github.com/mfpinheiro/btc-converter-tdd-course#readme",
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
+    "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
-    "babel-preset-es2015-native-modules": "^6.9.4",
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",
-    "eslint": "^4.11.0",
-    "eslint-config-airbnb": "^16.1.0",
+    "eslint": "^4.12.0",
+    "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-react": "^7.4.0",
     "husky": "^0.14.3",
     "mocha": "^4.0.1",
     "nyc": "^11.3.0",
-    "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.4"
-  },
-  "dependencies": {
-    "ramda": "^0.25.0",
-    "react": "^16.1.1",
-    "react-dom": "^16.1.1"
+    "rimraf": "^2.6.2"
   }
 }
