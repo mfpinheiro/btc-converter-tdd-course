@@ -58,5 +58,8 @@
     "nyc": "^11.3.0",
     "prettier": "^1.9.2",
     "rimraf": "^2.6.2"
+  },
+  "dependencies": {
+    "commander": "^2.12.2"
   }
 }
