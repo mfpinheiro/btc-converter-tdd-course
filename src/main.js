@@ -12,3 +12,6 @@ program
   .parse(process.argv);
 
 console.log(convertBTC(program.currency, program.amount));
+
+
+// https://apiv2.bitcoinaverage.com/convert/global?from=BTC&to=USD&amount=1
