@@ -15,7 +15,7 @@
     "test:coverage": "nyc npm test"
   },
   "preferGlobal": true,
-  "bin":{
+  "bin": {
     "btc-converter-tdd-course": "bin/main.js"
   },
   "nyc": {
